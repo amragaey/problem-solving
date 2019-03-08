@@ -69,18 +69,32 @@
  * @param {number} val
  * @return {number}
  */
+
+ // var removeElement = function (nums, val) {
+
+//     if (!nums.length) return 0;
+
+//     let j = 0;
+//     for (let i = 0; i < nums.length; i++) {
+//         if (nums[i] != val) {
+//             nums[j++] = nums[i];
+//         }
+//     }
+
+//     return j;
+
+// };
+
+// Another solution; removing the element from array
 var removeElement = function (nums, val) {
+  if (!nums.length) return 0;
+  
+  let i = nums.length - 1;
 
-    if (!nums.length) return 0;
+  while (i >= 0) {
+    if (nums[i] === val) nums.splice(i, 1);
+    i--;
+  }
 
-    let j = 0;
-    for (let i = 0; i < nums.length; i++) {
-        if (nums[i] != val) {
-            nums[j++] = nums[i];
-        }
-    }
-
-    return j;
-
+  return nums.length;
 };
-
