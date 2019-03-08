@@ -54,7 +54,7 @@
 var searchInsert = function (nums, target) {
 
   if (!nums.length || target < nums[0]) return 0;
-  
+
   let i = 0;
   for (; i < nums.length - 1; i++) {
     if (nums[i] == target) return i;
@@ -66,3 +66,26 @@ var searchInsert = function (nums, target) {
   return (nums[i] == target) ? i : i + 1;
 
 };
+
+// Binary Search Implementation: better time complexity => log(n)
+var searchInsert = function (nums, target) {
+  let len = nums.length;
+  if (!len || target < nums[0]) return 0;
+  if (target > nums[len - 1]) return len;
+
+  let start = 0;
+  let end = len - 1;
+
+  while (start <= end) {
+    let mid = Math.floor((start + end) / 2);
+    if (target == nums[mid]) {
+      return mid;
+    } else if (target < nums[mid]) {
+      end = mid - 1;
+    } else {
+      start = mid + 1;
+    }
+  }
+
+  return end + 1;
+}
